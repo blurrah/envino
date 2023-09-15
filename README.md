@@ -1,4 +1,10 @@
-# processdev
+# envino
+
+Pour your environment variables safely into your codebase.
+
+Parse your environment variables using zod and only allow that parsed object as your configuration
+
+-------
 
 Parses environment variables and does a few other things:
 - Optionally unset process.env so they can't leak in the same codebase
