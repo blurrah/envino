@@ -1,14 +1,14 @@
 # envino
 
 Pour your environment variables safely into your codebase.
+A collection of helper tools to work with environment variables in your codebase.
 
-Parse your environment variables using zod and only allow that parsed object as your configuration
+## Features
+- Parse environment variables using `zod` using `createEnv()`
+    - Allow unsetting or removing the environment variables the source object
+- Disable access to `process.env` using `taintProcessEnv()`
 
 -------
-
-Parses environment variables and does a few other things:
-- Optionally unset process.env so they can't leak in the same codebase
-- Optionally disallow access to process.env object
 
 To install dependencies:
 

@@ -4,18 +4,16 @@ import { createEnv } from "../..";
 
 config({ path: "./examples/basic/.testenv" });
 
-const parsedVariables = createEnv(
-  {
+const parsedVariables = createEnv({
+  variables: {
     TEST_ENV_VARIABLE: {
       validate: z.string(),
       unset: true,
     },
     TEST_BLA: z.string(),
   },
-  {
-    disableProcessEnv: false,
-  }
-);
+  options: {},
+});
 
 console.log(parsedVariables); // { TEST_ENV_VARIABLE: "test" }
 console.log(process.env.TEST_ENV_VARIABLE); // undefined

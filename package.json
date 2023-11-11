@@ -2,15 +2,18 @@
   "name": "processdev",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "build": "bun build ./index.ts --sourcemap=external --target node --outdir ./build --external zod",
+    "test": "bun test"
+  },
   "devDependencies": {
-    "@types/node": "^20.6.1",
+    "@types/node": "20.6.1",
     "bun-types": "latest",
-    "dotenv": "^16.3.1"
+    "dotenv": "16.3.1",
+    "zod": "3.22.2"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "dependencies": {
-    "zod": "^3.22.2"
+    "typescript": "^5.0.0",
+    "zod": "3"
   }
 }
