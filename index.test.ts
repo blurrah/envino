@@ -31,6 +31,13 @@ describe("createEnv", () => {
 
     expect(process.env.TEST).toBeUndefined();
   });
+
+  test("throws error when input is incorrect", () => {
+    process.env.TEST = "incorrect input";
+    expect(() =>
+      createEnv({ variables: { TEST: z.literal("test") } })
+    ).toThrow();
+  });
 });
 
 describe("taintProcessEnv", () => {

@@ -95,8 +95,6 @@ export function createEnv<TVariables extends Variables>({
   // Allow for potential input of env variables, fall back to process.env
   const env = envInput ?? process.env;
 
-  console.log(variables);
-
   // Flatten and collect all the zod validations from the variables object
   const preparedVariables = createFlattenedZodObject(variables);
 
