@@ -1,5 +1,6 @@
 import { z, ZodObject } from "zod";
-import type { Options, ParsedVariables, Variables } from "./types";
+import { checkIsVariableObject, createFlattenedZodObject } from "./helpers";
+import type { EnvInput, ParsedVariables, Variables } from "./types";
 
 /**
  * Creates a new environment object based on the provided variables.
@@ -10,13 +11,13 @@ import type { Options, ParsedVariables, Variables } from "./types";
  */
 export function createEnv<TVariables extends Variables>({
   variables,
-  options: { envInput } = {},
+  envInput = {},
 }: {
   variables: TVariables;
-  options?: Options;
+  envInput?: EnvInput;
 }): z.infer<ZodObject<ParsedVariables<TVariables>>> {
   // Allow for potential input of env variables, fall back to process.env
-  const env = envInput ?? process.env;
+  const env = Object.keys(envInput).length > 0 ? envInput : process.env;
 
   // Flatten and collect all the zod validations from the variables object
   const preparedVariables = createFlattenedZodObject(variables);

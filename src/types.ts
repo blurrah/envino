@@ -1,8 +1,6 @@
 import type { ZodType } from "zod";
 
-export type Options = {
-  envInput?: NodeJS.ProcessEnv;
-};
+export type EnvInput = NodeJS.ProcessEnv | Record<string, unknown>;
 
 export type VariableObject = {
   unset?: boolean;

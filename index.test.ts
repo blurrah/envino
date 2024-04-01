@@ -38,6 +38,22 @@ describe("createEnv", () => {
       createEnv({ variables: { TEST: z.literal("test") } })
     ).toThrow();
   });
+
+  test("string to array", () => {
+    process.env.TEST = "test1,test2";
+    expect(
+      createEnv({
+        variables: {
+          TEST: {
+            validate: z.array(z.string()),
+          },
+        },
+        {
+            TEST: process.env.TEST.split(","),
+        },
+      })
+    ).toEqual({ TEST: ["test1", "test2"] });
+  });
 });
 
 describe("taintProcessEnv", () => {

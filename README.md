@@ -10,7 +10,7 @@ Improve process.env variable handling with:
  - Disabling access to `process.env` directly in your codebase
 
 ## Features
-- Parse environment variables using `zod` using `createEnv()`
+- Validate environment variables using `zod` using `createEnv()`
     - Allow unsetting or removing the environment variables the source object
 - Disable access to `process.env` using `taintProcessEnv()`
 
